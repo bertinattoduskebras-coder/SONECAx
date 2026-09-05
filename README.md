@@ -7,9 +7,7 @@ local TweenService = game:GetService("TweenService")
 
 local LocalPlayer = Players.LocalPlayer
 
---------------------------------------------------
--- CONFIGURAÇÕES
---------------------------------------------------
+
 
 -- COLOQUE SEU USER ID AQUI
 local OWNER_USER_ID = 10368308763
@@ -20,18 +18,14 @@ local CHAT_HEIGHT = 300
 -- Tempo entre as piscadas do DONO
 local BLINK_TIME = 0.55
 
---------------------------------------------------
--- DESATIVA O CHAT PADRÃO
---------------------------------------------------
+
 
 pcall(function()
 	TextChatService.ChatWindowConfiguration.Enabled = false
 	TextChatService.ChatInputBarConfiguration.Enabled = false
 end)
 
---------------------------------------------------
--- GUI
---------------------------------------------------
+
 
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "CustomChat"
@@ -240,12 +234,7 @@ local function AddMessage(message)
 	)
 end
 
---------------------------------------------------
--- RECEBER MENSAGENS
---------------------------------------------------
 
-TextChatService.MessageReceived:Connect(function(message)
-	AddMessage(message)
 end)
 
 --------------------------------------------------
@@ -253,6 +242,8 @@ end)
 --------------------------------------------------
 
 Input.FocusLost:Connect(function(enterPressed)
+
+Event:FireServer(text)
 
 	if not enterPressed then
 		return
